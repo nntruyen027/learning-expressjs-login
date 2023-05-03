@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <style>
+        input {
+            width: 400px !important;
+            margin: 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Đăng nhập</h1>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"
+        id="username">
+    <input type="password" class="form-control" placeholder="Password" aria-label="Username"
+        aria-describedby="basic-addon1" id="password">
+    <button type="button" class="btn btn-outline-primary" onclick="login()">Đăng nhập</button>
+</body>
+<script>
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function login() {
+        $.ajax({
+            url: './login',
+            type: 'POST',
+            data: {
+                username: $('#username').val(),
+                password: $('#password').val()
+            }
+        })
+            .then((data) => {
+                setCookie('token', data.token, 1)
+                console.log(data.token);
+            })
+            .catch(err => {
+                console.log('Đăng nhập thất bại');
+            })
+    }
+
+
+</script>
+
+</html>

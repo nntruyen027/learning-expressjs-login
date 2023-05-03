@@ -1,0 +1,33 @@
+{
+  "name": "login-function",
+  "version": "1.0.0",
+  "description": "Học về chức năng login và xác thực tài khoản",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nntruyen027/learning-expressjs-login.git"
+  },
+  "keywords": [
+    "Login",
+    "ExpressJS",
+    "NodeJS"
+  ],
+  "author": "Nguyễn Ngọc Truyện",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nntruyen027/learning-expressjs-login/issues"
+  },
+  "homepage": "https://github.com/nntruyen027/learning-expressjs-login#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.1.0",
+    "nodemon": "^2.0.22"
+  }
+}
